@@ -105,7 +105,7 @@ main()
 		{
 			printf( "3.param = get----\r\n" );
 			/* ----------------------------------------------------------- */
-			sprintf( adc_result, "{\"temp\":%2d,\"humi\":%2d,\"light\":%2d}\r\n", GetADresult( 0 ) / 10.24, GetADresult( 1 ) / 10.24, GetADresult( 2 ) / 10.24 );   /*三路ad，原值范围0-1024，转换为0-100， */
+			sprintf( adc_result, "{\"temp\":%2d,\"humi\":%2d,\"light\":%2d}\r\n",(int)(GetADresult( 0 ) / 10.24), (int)(GetADresult( 1 ) / 10.24), (int)(GetADresult( 2 ) / 10.24 ));   /*三路ad，原值范围0-1024，转换为0-100， */
 			write( client_fd, "HTTP/1.1 200 OK\r\n", strlen( "HTTP/1.1 200 OK\r\n" ) );
 			write( client_fd, "Server:lf_server\r\n\r\n", strlen( "Server:lf_server\r\n\r\n" ) );
 			write( client_fd, adc_result, 34 );                                                                                                                     /* 只需要往回写34位，不包括"\0" */
